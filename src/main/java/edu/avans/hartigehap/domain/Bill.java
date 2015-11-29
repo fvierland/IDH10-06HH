@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * 
- * @author Erco
+ * Controle werking
  */
 @Entity
 // optional
