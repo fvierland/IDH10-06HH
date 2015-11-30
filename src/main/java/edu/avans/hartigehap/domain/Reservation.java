@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Reservation extends DomainObject {
 	private static final long serialVersionUID = 1L;
 
+	
 	@NotEmpty (message = "{validation.reservation.name.NotEmpty.message}")
 	private String name;
 	
