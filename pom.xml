@@ -3,8 +3,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.avans</groupId>
-  <artifactId>hh</artifactId>
-  <name>hh</name>
+  <artifactId>HHgroep6</artifactId>
+  <name>HHgroep6</name>
   <packaging>war</packaging>
   <version>1.5.0.RELEASE</version>
   
@@ -510,4 +510,5 @@
       </plugin>
     </plugins>
   </build>
+  <description>Avans Hartige Hap IDH10 groep 6</description>
 </project>
