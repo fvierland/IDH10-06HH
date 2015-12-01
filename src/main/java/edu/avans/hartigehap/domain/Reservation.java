@@ -1,7 +1,8 @@
 package edu.avans.hartigehap.domain;
 
-import javax.persistence.Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "RESERVATION")
+@Table(name = "RESERVATIONS")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id") 
 @Getter @Setter
 @ToString(callSuper=true, includeFieldNames=true, of= {"name"})
@@ -33,8 +34,8 @@ public class Reservation extends DomainObject {
 	@NotNull (message = "{validation.reservation.groupSize.NotNull.message}")
 	@Size (min=2, max= 99, message = "{validation.reservation.groupSize.Size.message}")
 	private int groupSize;
-	
-	
-	
+		
+	@ManyToOne()
+	private Room room;
 	
 }
