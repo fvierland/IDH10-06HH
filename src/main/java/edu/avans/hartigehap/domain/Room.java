@@ -24,8 +24,8 @@ public class Room extends DomainObject {
 	private String description;
 	
 	
-	@OneToMany(mappedBy="room")
-	private List<Reservation> reservations;
+//	@OneToMany(mappedBy="room")
+//	private List<Reservation> reservations;
 	
 	
 }
