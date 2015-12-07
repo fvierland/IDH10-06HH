@@ -47,6 +47,10 @@ public class Reservation extends DomainObject {
 	{
 		this.room = room;
 	}
+		
+	@ManyToOne
+	@JoinColumn(name="STATUS_ID")
+	private IReservationState state;
 	
 		
 	@OneToMany (mappedBy="reservation")
@@ -58,12 +62,10 @@ public class Reservation extends DomainObject {
 	}
 	
 	
-	@JoinColumn(name="StatusID", nullable=false)
-	private ReservationStatus status;
-		
-	public void setReservationStatus(ReservationStatus status)
+			
+	public void setReservationState(IReservationState state)
 	{
-		this.status = status;
+		this.state = state;
 	}
 	
 	
