@@ -8,30 +8,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.google.common.collect.Lists;
-import edu.avans.hartigehap.domain.FinalState;
-import edu.avans.hartigehap.domain.Reservation;
-import edu.avans.hartigehap.repository.FinalStateRepository;
-import edu.avans.hartigehap.service.FinalStateService;
 
-@Service("finalStateService")
+import com.google.common.collect.Lists;
+
+import edu.avans.hartigehap.domain.ConfirmedState;
+import edu.avans.hartigehap.repository.ConfirmedStateRepository;
+import edu.avans.hartigehap.service.ConfirmedStateService;
+
+@Service("confirmedStateService")
 @Repository
 @Transactional
-public class FinalStateServiceImpl implements FinalStateService {
-	final Logger logger = LoggerFactory.getLogger(FinalStateServiceImpl.class);
+public class ConfirmedStateServiceImpl implements ConfirmedStateService {
+	final Logger logger = LoggerFactory.getLogger(ConfirmedStateServiceImpl.class);
 
 	@Autowired
-	private FinalStateRepository stateRepository;
+	private ConfirmedStateRepository stateRepository;
 
 	@Transactional(readOnly=true)
-	public List<FinalState> findAll() {
+	public List<ConfirmedState> findAll() {
 		return Lists.newArrayList(stateRepository.findAll());
 	}
 
 	@Override
-	public FinalState save(FinalState state) {
+	public ConfirmedState save(ConfirmedState state) {
 		return this.stateRepository.save(state);
 	}
-
-	}
-
+}
