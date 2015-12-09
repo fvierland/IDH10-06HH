@@ -13,20 +13,19 @@ public class ConceptState extends IReservationState {
     @Transient
     private Reservation reservation;
 
-  
     @Override
-    public void makeFinal(Reservation reservation) {
-    // TODO Auto-generated method stub
+    public void makeConcept(Reservation reservation) throws InvalidStateException{
+        throw new InvalidStateException("Already in concept state");
     }
     
-	@Override
-	public void makeConcept(Reservation reservation) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void makeFinal(Reservation reservation)throws InvalidStateException{
+        throw new InvalidStateException("First confirm reservation!");
+    }
+			
+	
 	@Override
 	public void makeConfirmed(Reservation reservation) {
-		// TODO Auto-generated method stub
-		
+		// functie om status van concept naar confirmed te zetten
 	}
 }

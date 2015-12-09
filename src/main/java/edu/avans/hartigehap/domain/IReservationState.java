@@ -40,11 +40,11 @@ public abstract class IReservationState extends DomainObject
 	@Column(name = "STATE", insertable = false, updatable = false)
     private String state;
 	
-	public abstract void makeFinal(Reservation reservation) throws InvalidReservationStatusActionException;
+	public abstract void makeFinal(Reservation reservation) throws InvalidStateException;
 
-    public abstract void makeConcept(Reservation reservation) throws InvalidReservationStatusActionException;
+    public abstract void makeConcept(Reservation reservation) throws InvalidStateException;
 
-    public abstract void makeConfirmed(Reservation reservation) throws InvalidReservationStatusActionException;
+    public abstract void makeConfirmed(Reservation reservation) throws InvalidStateException;
 	
 	@Override
     public String toString() {

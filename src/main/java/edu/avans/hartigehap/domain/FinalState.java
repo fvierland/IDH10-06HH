@@ -14,29 +14,28 @@ public class FinalState extends IReservationState {
     @Transient
     private Reservation reservation;
 
-   /* @Override
-    public void makeFinal(Reservation reservation) {
-       List<FinalStatus> finalStatuses = finalStatusService.findAll();
-        reservation.setStatus(finalStatuses.get(0));
-        this.reservationService.save(reservation);
+    public void setReservation(Reservation reservation)
+    {
+        this.reservation = reservation;
     }
-    */
+    
+   // functie om de status op te halen moet nog toegevoegd worden   
+    
 
     @Override
-    public void makeFinal(Reservation reservation) {
-    // TODO Auto-generated method stub
+    public void makeFinal(Reservation reservation) throws InvalidStateException{
+        throw new InvalidStateException("Already in finalstate");
     }
     
 	@Override
-	public void makeConcept(Reservation reservation) {
-		// TODO Auto-generated method stub
+	public void makeConcept(Reservation reservation) throws InvalidStateException{
+        throw new InvalidStateException("Not allowed to change to concept when in finalstate");
 		
 	}
+		
 	@Override
-	public void makeConfirmed(Reservation reservation) {
-		// TODO Auto-generated method stub
-		
+	public void makeConfirmed(Reservation reservation) throws InvalidStateException{
+        throw new InvalidStateException("Not allowed to change to confirmed when in finalstate");
 	}
-    	
        
 }
