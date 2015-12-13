@@ -18,6 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import edu.avans.hartigehap.service.ConceptStateService;
+import edu.avans.hartigehap.service.ConfirmedStateService;
+import edu.avans.hartigehap.service.FinalStateService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,7 +31,7 @@ import lombok.Setter;
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="STATE")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-@Table(name = "RESERVATION_STATUS", uniqueConstraints =
+@Table(name = "RESERVATION_STATE", uniqueConstraints =
 @UniqueConstraint(name="type_unique", columnNames={"STATE"})
 )
 
@@ -36,6 +39,16 @@ public abstract class IReservationState extends DomainObject
 {
 	@Transient
 	protected Reservation reservation;
+	
+	@Transient
+    protected ConceptStateService conceptStateService;
+	
+	@Transient
+    protected ConfirmedStateService confirmedStateService;
+	
+	@Transient
+    protected FinalStateService finalStateService;
+	
 	
 	@Column(name = "STATE", insertable = false, updatable = false)
     private String state;
