@@ -35,7 +35,7 @@ public abstract class IFacility extends DomainObject {
     private String type;
 	
 	@OneToMany(mappedBy="facility")
-	private List<Reservation> reservation;
+	private List<Reservation> reservations;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Vat vat;
