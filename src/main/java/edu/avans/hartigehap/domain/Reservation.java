@@ -23,11 +23,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "RESERVATIONS")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-@Getter @Setter
+@Getter
+@Setter
 @ToString(callSuper=true, includeFieldNames=true, of= {"name"})
+
 public class Reservation extends DomainObject {
 	private static final long serialVersionUID = 1L;
-
 	
 	@NotEmpty (message = "{validation.reservation.name.NotEmpty.message}")
 	private String name;
@@ -36,16 +37,16 @@ public class Reservation extends DomainObject {
 	private String description;
 	
 	@NotNull (message = "{validation.reservation.groupSize.NotNull.message}")
-	@Size (min=2, max= 99, message = "{validation.reservation.groupSize.Size.message}")
+	@Size (min=5, max=50, message = "{validation.reservation.groupSize.Size.message}")
 	private int groupSize;
 		
 	@ManyToOne
 	@JoinColumn (name="RoomID")
-	private Room room;
+	private Facility facility;
 	
-		public void setRoom(Room room)
+		public void setRoom(Facility facility)
 	{
-		this.room = room;
+		this.facility = facility;
 	}
 		
 	@ManyToOne
@@ -60,13 +61,10 @@ public class Reservation extends DomainObject {
 	{
 		this.periods.add(period);
 	}
-	
-	
-			
+		
 	public void setReservationState(IReservationState state)
 	{
 		this.state = state;
 	}
-	
 	
 }

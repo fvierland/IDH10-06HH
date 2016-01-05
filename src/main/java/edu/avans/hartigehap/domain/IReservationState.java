@@ -11,8 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 //import org.hibernate.annotations.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

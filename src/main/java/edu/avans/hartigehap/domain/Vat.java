@@ -15,6 +15,7 @@ import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="VAT_TYPE")
@@ -22,6 +23,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 @Getter
 @Setter
+
 abstract public class Vat extends DomainObject {
 	
 	@OneToMany(mappedBy = "vat")

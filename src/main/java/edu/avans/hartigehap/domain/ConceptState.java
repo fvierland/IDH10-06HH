@@ -4,10 +4,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 
-
-
+@SuppressWarnings("serial")
 @Entity
 @DiscriminatorValue("CONCEPT")
+
 public class ConceptState extends IReservationState {
 
     @Transient

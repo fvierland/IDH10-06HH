@@ -6,6 +6,7 @@ import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
+@SuppressWarnings("serial")
 @Entity
 @Configurable
 @DiscriminatorValue("FINAL")

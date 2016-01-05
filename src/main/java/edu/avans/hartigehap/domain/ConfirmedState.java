@@ -6,15 +6,15 @@ import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Configurable;
 
+@SuppressWarnings("serial")
 @Entity
 @Configurable
 @DiscriminatorValue("CONFIRMED")
+
 public class ConfirmedState extends IReservationState {
 
     @Transient
     private Reservation reservation;
-
-  
 
     @Override
     public void makeFinal(Reservation reservation) {
@@ -31,6 +31,5 @@ public class ConfirmedState extends IReservationState {
 	public void makeConfirmed(Reservation reservation) throws InvalidStateException{
         throw new InvalidStateException("Already in confirmedstate");
 	}
-    	
-       
+    	    
 }
