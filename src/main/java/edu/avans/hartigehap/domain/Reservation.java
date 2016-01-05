@@ -55,11 +55,11 @@ public class Reservation extends DomainObject {
 	
 		
 	@OneToMany (mappedBy="reservation")
-	private List<Period> periods;
+	private List<IPeriod> iPeriods;
 	
-	public void addPeriod (Period period)
+	public void addPeriod (IPeriod iPeriod)
 	{
-		this.periods.add(period);
+		this.iPeriods.add(iPeriod);
 	}
 		
 	public void setReservationState(IReservationState state)
