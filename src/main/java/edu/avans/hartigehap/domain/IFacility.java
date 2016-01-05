@@ -18,7 +18,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 @Table(name = "Rooms") 
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
@@ -33,7 +34,7 @@ public abstract class IFacility extends DomainObject {
     @Column(name = "DTYPE", insertable = false, updatable = false)
     private String type;
 	
-	@OneToMany(mappedBy="room")
+	@OneToMany(mappedBy="facility")
 	private List<Reservation> reservations;
 	
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
