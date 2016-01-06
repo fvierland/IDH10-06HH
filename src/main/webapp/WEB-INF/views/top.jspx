@@ -28,6 +28,7 @@
     <spring:message code="label_kitchen_subsystem" var="labelKitchenSubsystem"/>
     <spring:message code="label_waiter_subsystem" var="labelWaiterSubsystem"/>
     <spring:message code="label_customer_subsystem" var="labelCustomerSubsystem"/>
+    <spring:message code="label_reservation_subsystem" var="labelReservationSubsystem"/>
     <spring:message code="label_dining_tables" var="labelDiningTables"/>
     <spring:message code="label_dining_table" var="labelDiningTable"/>
     <spring:message code="label_language" var="labelLanguage"/>
@@ -84,6 +85,10 @@
 
                                     <spring:url var="customerSubsystem" value="/restaurants/${restaurant.id}/customers" />
                                     <li><a href="${customerSubsystem}">${restaurant.id} ${labelCustomerSubsystem}</a></li>
+                                    <li class="divider"><jsp:text /></li>
+                                    <spring:url var="reservationSubsystem" value="/restaurants/${restaurant.id}/reservation" />
+                                    <li><a href="${reservationSubsystem}">${restaurant.id} ${labelReservationSubsystem}</a></li>
+                                    
                                 </ul>
                             </li>
                         </c:if>
