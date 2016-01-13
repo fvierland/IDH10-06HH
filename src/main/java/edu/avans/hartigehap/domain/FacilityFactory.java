@@ -16,8 +16,8 @@ public class FacilityFactory {
     	return _instance;
     }
 	
-	public IFacility buildRoom(IFacility facility, List<String> additions) {		
-		for (Iterator<String> i = additions.iterator(); i.hasNext(); ) {
+	public IFacility buildFacility(IFacility facility, List<String> decorators) {		
+		for (Iterator<String> i = decorators.iterator(); i.hasNext(); ) {
 			switch(i.next()) {
 			case "WIFI":
 				facility = new WifiDecorator(facility, 10);

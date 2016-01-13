@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 import edu.avans.hartigehap.domain.FinalState;
-import edu.avans.hartigehap.domain.Reservation;
 import edu.avans.hartigehap.repository.FinalStateRepository;
 import edu.avans.hartigehap.service.FinalStateService;
 

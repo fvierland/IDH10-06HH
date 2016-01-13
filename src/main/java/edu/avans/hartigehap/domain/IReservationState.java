@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 //import org.hibernate.annotations.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import edu.avans.hartigehap.service.ConceptStateService;
 import edu.avans.hartigehap.service.ConfirmedStateService;
 import edu.avans.hartigehap.service.FinalStateService;
+import edu.avans.hartigehap.service.ReservationService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,18 +38,25 @@ import lombok.Setter;
 
 public abstract class IReservationState extends DomainObject
 {
+	@Autowired
 	@Transient
 	protected Reservation reservation;
 	
+	@Autowired
 	@Transient
     protected ConceptStateService conceptStateService;
 	
+	@Autowired
 	@Transient
     protected ConfirmedStateService confirmedStateService;
 	
+	@Autowired
 	@Transient
     protected FinalStateService finalStateService;
 	
+	@Autowired
+    @Transient
+    protected ReservationService reservationService;	
 	
 	@Column(name = "STATE", insertable = false, updatable = false)
     private String state;
