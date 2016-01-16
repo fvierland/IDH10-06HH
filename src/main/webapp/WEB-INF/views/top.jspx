@@ -14,7 +14,11 @@
     <spring:message code="label_logout" var="labelLogout"/>
     <spring:message code="label_welcome" var="labelWelcome"/>
     <spring:url value="/" var="homeUrl"/>
-    <spring:url value="/restaurants" var="indexRestaurantsUrl"/>
+        <spring:url value="/restaurants" var="indexRestaurantsUrl"/>
+         <spring:url value="/newPizza" var="newPizza"/>
+        
+    <spring:url value="/reservations" var="listReservations" />
+    
     <spring:url value="/j_spring_security_logout" var="logoutUrl"/>
     <spring:message code="label_employee_area" var="labelEmployeeArea"/>
     <spring:message code="label_admin_area" var="labelAdminArea"/>
@@ -86,8 +90,12 @@
                                     <spring:url var="customerSubsystem" value="/restaurants/${restaurant.id}/customers" />
                                     <li><a href="${customerSubsystem}">${restaurant.id} ${labelCustomerSubsystem}</a></li>
                                     <li class="divider"><jsp:text /></li>
-                                    <spring:url var="reservationSubsystem" value="/restaurants/${restaurant.id}/reservation" />
+                                    
+                                    <spring:url var="reservationSubsystem" value="/restaurants/${restaurant.id}/reservations" />
                                     <li><a href="${reservationSubsystem}">${restaurant.id} ${labelReservationSubsystem}</a></li>
+                                    
+                                                                       
+                                    
                                     
                                 </ul>
                             </li>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	 xmlns:c="http://java.sun.com/jsp/jstl/core"
+	 xmlns:spring="http://www.springframework.org/tags"
+	 xmlns:sec="http://www.springframework.org/security/tags"
+	 version="2.0">
+
+	
+
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	
+	<!-- Add elvariables to help our IDE for code completion -->
+	<!--@elvariable id="message" type="edu.avans.hartigehap.web.form.Message"-->
+	<!--@elvariable id="customer" type="edu.avans.hartigehap.domain.Customer"-->
+	<!--@elvariable id="restaurant" type="edu.avans.hartigehap.domain.Restaurant"-->
+
+	
+	<spring:message code="label_restaurant" var="labelRestaurant" />
+	<spring:message code="label_reservation_subsystem" var="labelReservationSubsystem" />
+	<spring:message code="label_reservation_description" var="labelReservationDescription" />
+	<spring:message code="label_reservation_update" var="labelReservationUpdate" />
+	<spring:message code="label_reservation_new" var="labelReservationNew" />
+	<spring:message code="label_reservation_groupsize" var="labelReservationGroupSize" />
+	<spring:message code="label_reservation_name" var="labelReservationName" />
+	<spring:message code="label_reservation_word" var="labelReservationWord" />
+	<spring:message code="label_reservation_roomID" var="labelReservationRoomID" />
+	<spring:message code="label_reservation_price" var="labelReservationPrice" />
+	<spring:message code="label_reservation_update" var="labelReservationUpdate" />
+	<spring:message code="label_reservation_delete" var="labelReservationDelete" />
+	<spring:message code="date_format_pattern" var="dateFormatPattern" />
+	<spring:message code="text_there_are_no_reservations" var="textThereAreNoReservations" />
+		
+	<spring:message code="text_clear" var="textClear" />
+	<spring:message code="text_save" var="textSave" />
+	<spring:message code="text_browse" var="textBrowse" />
+	<spring:message code="text_reset" var="textReset" />
+	<spring:url value="/restaurants/${restaurant.id}" var="showRestaurant" />
+		
+	<spring:message code="label_create_reservation" var="labelCreateReservation"/>
+	<spring:message code="table_name" var="tableName" />
+	<spring:message code="table_groupSize" var="tableGroupsize" />
+	<spring:eval expression="reservation.id == null ? labelReservationNew:labelReservationUpdate" var="formTitle" />
+	
+	<div class="row">
+		<h1>${labelReservationSubsystem}</h1>
+		<h2 class="restaurant muted">${labelRestaurant} <a href="${showRestaurant}">${restaurant.id}</a></h2>
+
+		<c:if test="${not empty message}">
+			<div id="message" class="alert alert-info ${message.type}">${message.message}</div>
+		</c:if>
+	</div>
+	
+	<form:form modelAttribute="reservation" id="reservationUpdateForm" enctype="multipart/form-data" method="${reservation.id==null ? 'post':'put'}">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">${formTitle}</h3>
+					<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
+					<span class="pull-right" style="height: 10px;">
+						<ul class="nav panel-tabs">
+							<li><button type="submit" class="btn btn-success">${textSave}</button></li>
+							<li><button type="reset" class="btn btn-warning">${textReset}</button></li>
+						</ul>
+					</span>
+					</sec:authorize>
+				</div>
+				<div class="panel-body">
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="name" path="name">${labelReservationName}</span>
+						<form:input path="name" class="form-control capitalise" placeholder="${labelReservationName}" aria-describedby="Name" />
+						<div>
+							<form:errors path="Name" cssClass="error" />
+						</div>
+					</div>
+
+					<p />
+
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="groupSize" path="groupSize">${labelReservationGroupSize}</span>
+						<form:input path="groupSize" class="form-control capitalise" placeholder="${labelCustomerLastName}" aria-describedby="groupSize" />
+						<div>
+							<form:errors path="groupSize" cssClass="error" />
+						</div>
+					</div>
+
+					
+
+					
+							
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form:form>
+</div>
