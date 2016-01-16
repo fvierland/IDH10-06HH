@@ -1,12 +1,15 @@
 package edu.avans.hartigehap.domain;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -56,6 +59,11 @@ public class Reservation extends DomainObject {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="CUSTOMER_ID")
 	private Customer customer;
+	
+	// no cascading
+    @ManyToMany
+    private Collection<Restaurant> restaurants = new ArrayList<Restaurant>();
+	
 	
 	public void addPeriod (IPeriod Period)
 	{

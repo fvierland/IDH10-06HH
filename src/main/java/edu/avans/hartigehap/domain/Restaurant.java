@@ -41,6 +41,11 @@ public class Restaurant extends DomainObjectNaturalId {
     @ManyToMany(mappedBy = "restaurants")
     private Collection<Customer> customers = new ArrayList<>();
 
+    // no cascading
+    @ManyToMany(mappedBy = "restaurants")
+    private Collection<Reservation> reservations = new ArrayList<>();
+    
+    
     public Restaurant(String name, String imageFileName) {
         super(name);
         this.imageFileName = imageFileName;

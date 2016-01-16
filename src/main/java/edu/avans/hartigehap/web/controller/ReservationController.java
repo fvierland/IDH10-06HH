@@ -39,26 +39,12 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @Autowired
-    private FinalStateService finalStateService;
-
-    @Autowired
-    private CustomerService customerService;
-    
-    @Autowired
-    private FacilityService facilityService;
-
-    @Autowired
-    private ConfirmedStateService confirmedStateService;
-
-    @Autowired
-    private ConceptStateService conceptStateService;
-
-    @Autowired
     private RestaurantService restaurantService;
     
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations", method = RequestMethod.GET)
     public String listReservations (@PathVariable("restaurantName")String restaurantName, Model uiModel) {
-
+    	warmupRestaurant(restaurantName, uiModel);
+    	
     	List<Reservation> reservations = this.reservationService.findAll();
     	
     	
@@ -67,14 +53,14 @@ public class ReservationController {
         return "hartigehap/listreservations";
     }
 
-  /* private Restaurant warmupRestaurant(String restaurantName, Model uiModel) {
+   private Restaurant warmupRestaurant(String restaurantName, Model uiModel) {
         Collection<Restaurant> restaurants = restaurantService.findAll();
         uiModel.addAttribute("restaurants", restaurants);
         Restaurant restaurant = restaurantService.fetchWarmedUp(restaurantName);
         uiModel.addAttribute("restaurant", restaurant);
         return restaurant;
     }
-    */
+    
 }
 
 
