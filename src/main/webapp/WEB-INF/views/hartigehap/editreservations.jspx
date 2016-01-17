@@ -5,21 +5,18 @@
 	 xmlns:sec="http://www.springframework.org/security/tags"
 	 version="2.0">
 
-	
-
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	
 	<!-- Add elvariables to help our IDE for code completion -->
 	<!--@elvariable id="message" type="edu.avans.hartigehap.web.form.Message"-->
-	<!--@elvariable id="customer" type="edu.avans.hartigehap.domain.Customer"-->
+	@elvariable id="reservation" type="edu.avans.hartigehap.domain.Reservation"
 	<!--@elvariable id="restaurant" type="edu.avans.hartigehap.domain.Restaurant"-->
 
 	
 	<spring:message code="label_restaurant" var="labelRestaurant" />
 	<spring:message code="label_reservation_subsystem" var="labelReservationSubsystem" />
 	<spring:message code="label_reservation_description" var="labelReservationDescription" />
-	<spring:message code="label_reservation_update" var="labelReservationUpdate" />
 	<spring:message code="label_reservation_new" var="labelReservationNew" />
 	<spring:message code="label_reservation_groupsize" var="labelReservationGroupSize" />
 	<spring:message code="label_reservation_name" var="labelReservationName" />
@@ -68,9 +65,9 @@
 				<div class="panel-body">
 					<div class="input-group input-group-100">
 						<span class="input-group-addon input-group-min-width" id="name" path="name">${labelReservationName}</span>
-						<form:input path="name" class="form-control capitalise" placeholder="${labelReservationName}" aria-describedby="Name" />
+						<form:input path="name" class="form-control capitalise" placeholder="${labelReservationName}" aria-describedby="name" />
 						<div>
-							<form:errors path="Name" cssClass="error" />
+							<form:errors path="name" cssClass="error" />
 						</div>
 					</div>
 
@@ -78,7 +75,7 @@
 
 					<div class="input-group input-group-100">
 						<span class="input-group-addon input-group-min-width" id="groupSize" path="groupSize">${labelReservationGroupSize}</span>
-						<form:input path="groupSize" class="form-control capitalise" placeholder="${labelCustomerLastName}" aria-describedby="groupSize" />
+						<form:input path="groupSize" class="form-control capitalise" placeholder="${labelReservationGroupSize}" aria-describedby="groupSize" />
 						<div>
 							<form:errors path="groupSize" cssClass="error" />
 						</div>
@@ -92,6 +89,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		
 	</form:form>
 </div>
