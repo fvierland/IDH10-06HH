@@ -1,7 +1,23 @@
 package edu.avans.hartigehap.service.impl;
 
-import edu.avans.hartigehap.domain.*;
-import edu.avans.hartigehap.repository.*;
+import edu.avans.hartigehap.domain.ConceptState;
+import edu.avans.hartigehap.domain.ConfirmedState;
+import edu.avans.hartigehap.domain.FinalState;
+import edu.avans.hartigehap.domain.Customer;
+import edu.avans.hartigehap.domain.DiningTable;
+import edu.avans.hartigehap.domain.Drink;
+import edu.avans.hartigehap.domain.FoodCategory;
+import edu.avans.hartigehap.domain.Meal;
+import edu.avans.hartigehap.domain.Restaurant;
+import edu.avans.hartigehap.domain.Facility;
+import edu.avans.hartigehap.repository.CustomerRepository;
+import edu.avans.hartigehap.repository.ConceptStateRepository;
+import edu.avans.hartigehap.repository.ConfirmedStateRepository;
+import edu.avans.hartigehap.repository.FinalStateRepository;
+import edu.avans.hartigehap.repository.FoodCategoryRepository;
+import edu.avans.hartigehap.repository.MenuItemRepository;
+import edu.avans.hartigehap.repository.RestaurantRepository;
+import edu.avans.hartigehap.repository.FacilityRepository;
 import edu.avans.hartigehap.service.RestaurantPopulatorService;
 
 import org.joda.time.DateTime;
@@ -9,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +44,14 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
     private MenuItemRepository menuItemRepository;
     @Autowired
     private CustomerRepository customerRepository;
-
+    @Autowired
+	private FacilityRepository facilityRepository;
+    @Autowired
+	private ConceptStateRepository conceptStateRepository;
+	@Autowired
+	private FinalStateRepository finalStateRepository;
+    
+    
     private List<Meal> meals = new ArrayList<>();
     private List<FoodCategory> foodCats = new ArrayList<>();
     private List<Drink> drinks = new ArrayList<>();
@@ -73,6 +97,13 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
         createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
         createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
         createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
+        
+        // create facilities
+        facilityRepository.save(new Facility("Facility1", 50));
+        facilityRepository.save(new Facility("Facility2", 100));
+        facilityRepository.save(new Facility("Facility3", 150));
+        facilityRepository.save(new Facility("Facility4", 200));
+		
     }
 
     private void createFoodCategory(String tag) {

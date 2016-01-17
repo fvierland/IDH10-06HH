@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
-@Table(name = "Rooms") 
+@Table(name = "Facilities") 
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 
 public abstract class IFacility extends DomainObject {
