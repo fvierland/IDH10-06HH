@@ -20,7 +20,6 @@
 	<spring:message code="label_reservation_subsystem" var="labelReservationSubsystem" />
 	<spring:message code="label_reservation_description" var="labelReservationDescription" />
 	<spring:message code="label_reservation_update" var="labelReservationUpdate" />
-	<spring:message code="label_reservation_new" var="labelReservationNew" />
 	<spring:message code="label_reservation_groupsize" var="labelReservationGroupSize" />
 	<spring:message code="label_reservation_name" var="labelReservationName" />
 	<spring:message code="label_reservation_word" var="labelReservationWord" />
