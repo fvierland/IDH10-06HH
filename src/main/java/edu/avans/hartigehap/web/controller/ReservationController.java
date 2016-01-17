@@ -34,6 +34,12 @@ public class ReservationController {
     @Autowired
     private RestaurantService restaurantService;
     
+    @Autowired
+    private CustomerService customerService;
+    
+    @Autowired
+    private FacilityService facilityService;
+    
     //List reservations
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations", method = RequestMethod.GET)
     public String listReservations (@PathVariable("restaurantName")String restaurantName, Model uiModel) {
@@ -106,14 +112,17 @@ public class ReservationController {
         }
     
     //Reservering aanmaken
-    @RequestMapping(value = "/restaurants/{restaurantName}/reservations", params = "form", method = RequestMethod.POST)
-    public String createReservation(@PathVariable("restaurantName") String restaurantName, @Valid Reservation reservation,
-            BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,
-            RedirectAttributes redirectAttributes, Locale locale )     {
+    @RequestMapping(value = "/restaurants/{restaurantName}/newreservations", method = RequestMethod.POST)
+    public String createReservation(@PathVariable("restaurantName") String restaurantName, Model uiModel)          {
+    	List<Customer> customers = this.customerService.findAll();
+        List<IFacility> iFacility = this.facilityService.findByType("Room");
 
+        uiModel.addAttribute("reservation", new Reservation());
+        uiModel.addAttribute("customers", customers);
+        uiModel.addAttribute("ifacility", iFacility);
+        return "hartigehap/newreservations";
     	
-        return handleCreateOrUpdateReservation(true, restaurantName, reservation, bindingResult, uiModel,
-                httpServletRequest, redirectAttributes, locale);
+        
     }
     
     
