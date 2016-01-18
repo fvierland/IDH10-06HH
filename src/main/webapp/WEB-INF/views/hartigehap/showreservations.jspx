@@ -76,7 +76,7 @@
 
 				<div class="input-group">
 					<span class="input-group-addon" id="description" path="description">${labelReservationGroupSize}</span>
-					<input type="text" class="form-control capitalise" id="reservationDescription" value="${Reservation.groupSize}" readonly="true" />
+					<input type="text" class="form-control capitalise" id="reservationDescription" value="${reservation.groupSize}" readonly="true" />
 				</div>
 	
 	</div>
