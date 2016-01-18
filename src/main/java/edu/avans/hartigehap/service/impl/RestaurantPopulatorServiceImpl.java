@@ -9,6 +9,7 @@ import edu.avans.hartigehap.domain.Drink;
 import edu.avans.hartigehap.domain.FoodCategory;
 import edu.avans.hartigehap.domain.Meal;
 import edu.avans.hartigehap.domain.Restaurant;
+import edu.avans.hartigehap.domain.Reservation;
 import edu.avans.hartigehap.domain.Facility;
 import edu.avans.hartigehap.repository.CustomerRepository;
 import edu.avans.hartigehap.repository.ConceptStateRepository;
@@ -17,6 +18,7 @@ import edu.avans.hartigehap.repository.FinalStateRepository;
 import edu.avans.hartigehap.repository.FoodCategoryRepository;
 import edu.avans.hartigehap.repository.MenuItemRepository;
 import edu.avans.hartigehap.repository.RestaurantRepository;
+import edu.avans.hartigehap.repository.ReservationRepository;
 import edu.avans.hartigehap.repository.FacilityRepository;
 import edu.avans.hartigehap.service.RestaurantPopulatorService;
 
@@ -52,6 +54,8 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 	private ConfirmedStateRepository confirmedStateRepository;
 	@Autowired
 	private FinalStateRepository finalStateRepository;
+	@Autowired
+    private ReservationRepository reservationRepository;
     
     
     private List<Meal> meals = new ArrayList<>();
@@ -112,7 +116,8 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 		this.finalStateRepository.save(new FinalState());
 		
 		// create reservations
-        
+		reservationRepository.save(new Reservation ("Jansen", "Bruiloft",20));
+		reservationRepository.save(new Reservation ("Kimpton", "50jaar",50));
     }
 
     private void createFoodCategory(String tag) {

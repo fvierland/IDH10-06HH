@@ -42,7 +42,6 @@ public class Reservation extends DomainObject {
 	private String description;
 	
 	@NotNull (message = "{validation.reservation.groupSize.NotNull.message}")
-	@Size (min=5, max=50, message = "{validation.reservation.groupSize.Size.message}")
 	private int groupSize;
 	
 	@ManyToOne
@@ -86,7 +85,10 @@ public class Reservation extends DomainObject {
 		    name = reservation.name;
 	        groupSize = reservation.groupSize;
 	        description = reservation.description;
-	        
-	       
 	    }
+	public Reservation (String name, String description, int groupSize){
+		 this.name=name;
+		 this.description=description;
+		 this.groupSize=groupSize;
+		}
 	}
