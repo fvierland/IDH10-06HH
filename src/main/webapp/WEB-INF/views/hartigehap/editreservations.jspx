@@ -10,7 +10,7 @@
 	
 	<!-- Add elvariables to help our IDE for code completion -->
 	<!--@elvariable id="message" type="edu.avans.hartigehap.web.form.Message"-->
-	@elvariable id="reservation" type="edu.avans.hartigehap.domain.Reservation"
+	<!--@elvariable id="reservation" type="edu.avans.hartigehap.domain.Reservation"-->
 	<!--@elvariable id="restaurant" type="edu.avans.hartigehap.domain.Restaurant"-->
 
 	
