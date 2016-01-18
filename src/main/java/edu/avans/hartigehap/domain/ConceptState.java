@@ -1,5 +1,7 @@
 package edu.avans.hartigehap.domain;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
@@ -23,9 +25,10 @@ public class ConceptState extends IReservationState {
         throw new InvalidStateException("First confirm reservation!");
     }
 			
-	
 	@Override
 	public void makeConfirmed(Reservation reservation) {
-		// functie om status van concept naar confirmed te zetten
+		List<ConfirmedState> confirmedStates = confirmedStateService.findAll();
+        reservation.setState(confirmedStates.get(0));
+        this.reservationService.save(reservation);
 	}
 }

@@ -48,6 +48,8 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 	private FacilityRepository facilityRepository;
     @Autowired
 	private ConceptStateRepository conceptStateRepository;
+    @Autowired
+	private ConfirmedStateRepository confirmedStateRepository;
 	@Autowired
 	private FinalStateRepository finalStateRepository;
     
@@ -99,11 +101,18 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
         createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
         
         // create facilities
-        facilityRepository.save(new Facility("Facility1", 50));
-        facilityRepository.save(new Facility("Facility2", 100));
-        facilityRepository.save(new Facility("Facility3", 150));
-        facilityRepository.save(new Facility("Facility4", 200));
+        facilityRepository.save(new Facility("De Bronzen Kamer", 50));
+        facilityRepository.save(new Facility("De Zilveren Kamer", 100));
+        facilityRepository.save(new Facility("De Gouden Kamer", 150));
+        facilityRepository.save(new Facility("De Platinum Kamer", 200));
 		
+        // create reservation states
+        this.conceptStateRepository.save(new ConceptState());
+        this.confirmedStateRepository.save(new ConfirmedState());
+		this.finalStateRepository.save(new FinalState());
+		
+		// create reservations
+        
     }
 
     private void createFoodCategory(String tag) {

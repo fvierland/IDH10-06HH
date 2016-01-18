@@ -1,5 +1,7 @@
 package edu.avans.hartigehap.domain;
 
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
@@ -18,13 +20,14 @@ public class ConfirmedState extends IReservationState {
 
     @Override
     public void makeFinal(Reservation reservation) {
-    	// functie om status van confirmed naar final te zetten
+    	List<FinalState> finalStates = finalStateService.findAll();
+        reservation.setState(finalStates.get(0));
+        this.reservationService.save(reservation);
     }
     
 	@Override
 	public void makeConcept(Reservation reservation) throws InvalidStateException{
         throw new InvalidStateException("Not allowed to change to concept when in confirmedstate");
-			
 	}
 	
 	@Override
