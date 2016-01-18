@@ -81,7 +81,6 @@ public class Reservation extends DomainObject {
 	{
 		this.facility = facility;
 	}
-	
 	public void updateEditableFields(Reservation reservation) {
 		    name = reservation.name;
 	        groupSize = reservation.groupSize;

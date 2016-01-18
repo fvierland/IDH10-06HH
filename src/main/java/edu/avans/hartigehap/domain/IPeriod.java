@@ -2,7 +2,7 @@ package edu.avans.hartigehap.domain;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Type;
+
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
@@ -24,7 +24,6 @@ public abstract class IPeriod extends DomainObject{
 	@Column(name = "DTYPE", insertable = false, updatable = false)
 	private String type;
 
-	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	protected LocalDate date;
 	
 	@ManyToOne()

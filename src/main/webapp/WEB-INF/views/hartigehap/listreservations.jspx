@@ -32,7 +32,7 @@
 	<spring:message code="label_create_reservation" var="labelCreateReservation"/>
 	<spring:message code="table_name" var="tableName" />
 	<spring:message code="table_groupSize" var="tableGroupsize" />
-	<spring:url value="/restaurants/${restaurant.id}/reservations?form" var="createReservationUrl"/>
+	<spring:url value="/restaurants/${restaurant.id}/newreservations" var="createReservation"/>
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="showReservationUrl" />
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="reservationsUrl" />
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="editReservationUrl" />
@@ -58,8 +58,8 @@
 					<!-- Tabs -->
 						<ul class="nav panel-tabs">
 							<li>
-								<form action="${createReservationUrl}" method="get">
-									<input type="hidden" name="form" />
+								<form action="${createReservation}" method="post">
+									
 									<button type="submit" class="btn btn-success">${labelCreateReservation}</button>
 								</form>
 							</li>
