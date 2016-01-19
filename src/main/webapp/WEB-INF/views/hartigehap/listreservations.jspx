@@ -32,6 +32,7 @@
 	<spring:message code="label_create_reservation" var="labelCreateReservation"/>
 	<spring:message code="table_name" var="tableName" />
 	<spring:message code="table_groupSize" var="tableGroupsize" />
+	<spring:message code="table_description" var="tableDescription" />
 	<spring:url value="/restaurants/${restaurant.id}/reservations?form" var="createReservationUrl"/>
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="showReservationUrl" />
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="reservationsUrl" />
@@ -72,7 +73,8 @@
 							<thead>
 							<tr>
 								<th>${tableName}</th>
-								<th>${tableGroupSize}</th>
+								<th>${tableGroupsize}</th>
+								<th>${tableDescription}</th>
 								<th style="text-align:right;">${tableActions}</th>
 							</tr>
 							</thead>
@@ -81,6 +83,7 @@
 							<tr>
 								<td class="capitalise">${reservation.name}</td>
 								<td class="capitalise">${reservation.groupSize}</td>
+								<td class="capitalise">${reservation.description}</td>
 								<td style="text-align:right;">
 									<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
 										<a style="float:right;" href="${deleteReservationUrl}/${reservation.id}?delete" class="btn btn-danger btn-float-left-margin-right" role="button"><span class="glyphicon glyphicon-remove-sign"><jsp:text /></span></a>
