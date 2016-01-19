@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.*;
 
 import lombok.Getter;
@@ -41,10 +44,9 @@ public class Restaurant extends DomainObjectNaturalId {
     @ManyToMany(mappedBy = "restaurants")
     private Collection<Customer> customers = new ArrayList<>();
 
-    // no cascading
+    //no cascading
     @ManyToMany(mappedBy = "restaurants")
     private Collection<Reservation> reservations = new ArrayList<>();
-    
     
     public Restaurant(String name, String imageFileName) {
         super(name);

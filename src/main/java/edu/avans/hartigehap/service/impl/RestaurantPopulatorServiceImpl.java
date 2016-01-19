@@ -98,11 +98,12 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 
         // create Customers
         byte[] photo = new byte[] { 127, -128, 0 };
-        createCustomer("peter", "limonade", new DateTime(), 1, "description", photo);
-        createCustomer("barry", "batsbak", new DateTime(), 1, "description", photo);
-        createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
-        createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
-        createCustomer("piet", "bakker", new DateTime(), 1, "description", photo);
+        createCustomer("Peter", "Limonade", new DateTime(), 1, "description", photo);
+        createCustomer("Barry", "Batsbak", new DateTime(), 1, "description", photo);
+        createCustomer("Rickert", "de Vries", new DateTime(), 1, "description", photo);
+        createCustomer("Luc", "Koevoets", new DateTime(), 1, "description", photo);
+        createCustomer("John", "Kimpton", new DateTime(), 1, "description", photo);
+        createCustomer("Francis", "van Ierland", new DateTime(), 1, "description", photo);
         
         // create facilities
         facilityRepository.save(new Facility("De Bronzen Kamer", 50));
@@ -116,8 +117,10 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 		this.finalStateRepository.save(new FinalState());
 		
 		// create reservations
-		reservationRepository.save(new Reservation ("Jansen", "Bruiloft",20));
-		reservationRepository.save(new Reservation ("Kimpton", "50jaar",50));
+		reservationRepository.save(new Reservation ("Jansen", "Bruiloft",20,1,2,3));
+		reservationRepository.save(new Reservation ("Kimpton", "50 jaar",50,2,3,2));
+		reservationRepository.save(new Reservation ("Koevoets", "Examen Feest",80,1,2,3));
+		reservationRepository.save(new Reservation ("van Ierland", "Verjaardag",40,2,3,2));		
     }
 
     private void createFoodCategory(String tag) {

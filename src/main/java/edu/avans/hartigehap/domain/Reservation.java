@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -31,6 +32,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Getter
 @Setter
 @ToString(callSuper=true, includeFieldNames=true, of= {"name"})
+@NoArgsConstructor
 
 public class Reservation extends DomainObject {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +47,7 @@ public class Reservation extends DomainObject {
 	private int groupSize;
 	
 	@ManyToOne
-	@JoinColumn (name="FacilityID")
+	@JoinColumn (name="FACILITY_ID")
 	private IFacility facility;
 	
 	@ManyToOne
@@ -59,10 +61,9 @@ public class Reservation extends DomainObject {
 	@JoinColumn(name="CUSTOMER_ID")
 	private Customer customer;
 	
-	// no cascading
-    @ManyToMany
+	//no cascading
+    @OneToMany
     private Collection<Restaurant> restaurants = new ArrayList<Restaurant>();
-	
 	
 	public void addPeriod (IPeriod Period)
 	{
@@ -86,9 +87,12 @@ public class Reservation extends DomainObject {
 	        groupSize = reservation.groupSize;
 	        description = reservation.description;
 	    }
-	public Reservation (String name, String description, int groupSize){
+	public Reservation (String name, String description, int groupSize, long CUSTOMER_ID, long FACILITY_ID, long STATUS_ID){
 		 this.name=name;
 		 this.description=description;
 		 this.groupSize=groupSize;
+		 CUSTOMER_ID = customer.getId();
+		 FACILITY_ID = facility.getId();
+		 STATUS_ID = state.getId();
 		}
 	}
