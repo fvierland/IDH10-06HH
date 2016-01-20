@@ -63,15 +63,7 @@
          <button type="submit" class="btn btn-succes">${labelReservationSave}</button>
         </form>
        </li>
-       
-       
-       <li>
-         <form action="${editReservationUrl}/${reservation.id}" method="get">
-         <input type="hidden" name="form" />
-         <button type="submit" class="btn btn-warning">${labelReservationUpdate}</button>
-        </form>
-       </li>
-       
+                          
        <li>
         <form action="${deleteReservationUrl}/${reservation.id}" method="get">
          <input type="hidden" name="delete" />
@@ -93,7 +85,7 @@
 
    <div class="input-group input-group-100">
      <span class="input-group-addon input-group-min-width" id="description" path="description">${labelReservationGroupSize}</span>
-     <input type="text" class="form-control capitalise" id="reservationDescription" value="${reservation.groupSize}"  />
+     <input type="text" class="form-control capitalise" id="reservationDescription" value="${reservation.groupSize}" readonly="true"  />
     </div>
 	
 <div class="input-group input-group-100">

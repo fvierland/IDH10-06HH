@@ -3,6 +3,7 @@
 	 xmlns:c="http://java.sun.com/jsp/jstl/core"
 	 xmlns:spring="http://www.springframework.org/tags"
 	 xmlns:sec="http://www.springframework.org/security/tags"
+	 xmlns:form="http://www.springframework.org/tags/form"
 	 version="2.0">
 
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
@@ -27,6 +28,11 @@
 	<spring:message code="label_reservation_delete" var="labelReservationDelete" />
 	<spring:message code="date_format_pattern" var="dateFormatPattern" />
 	<spring:message code="text_there_are_no_reservations" var="textThereAreNoReservations" />
+	<spring:message code="label_reservation_customer_name" var="labelReservationCustomerName" />
+ 	<spring:message code="label_reservation_status" var="labelReservationStatus" />
+ 	<spring:message code="label_reservation_facility" var="labelReservationFacility" />
+    <spring:message code="label_reservation_name" var="labelReservationName" />	
+    <spring:message code="label_reservation_form_decor" var="labelReservationFormDecor" />	
 		
 	<spring:message code="text_clear" var="textClear" />
 	<spring:message code="text_save" var="textSave" />
@@ -47,5 +53,91 @@
 			<div id="message" class="alert alert-info ${message.type}">${message.message}</div>
 		</c:if>
 	</div>
+	<form:form modelAttribute="reservation" id="reservationUpdateForm" enctype="multipart/form-data" method="${reservation.id==null ? 'post':'put'}">
+	
+			<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">${formTitle}</h3>
+					<sec:authorize access="hasRole('ROLE_EMPLOYEE')">
+					<span class="pull-right" style="height: 10px;">
+						<ul class="nav panel-tabs">
+							<li><button type="submit" class="btn btn-success">${textSave}</button></li>
+							<li><button type="reset" class="btn btn-warning">${textReset}</button></li>
+						</ul>
+					</span>
+					</sec:authorize>
+				</div>
+				
+				<div class="panel-body">
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="name" path="name">${labelReservationName}</span>
+						<form:input path="name" class="form-control capitalise" placeholder="${labelReservationName}" aria-describedby="name" />
+						<div>
+							<form:errors path="name" cssClass="error" />
+						</div>
+					</div>
+				</div>
+				<p />
+				<div class="panel-body">
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="groupSize" path="groupSize">${labelReservationGroupSize}</span>
+						<form:input path="groupSize" class="form-control capitalise" placeholder="${labelReservationGroupSize}" aria-describedby="groupSize" />
+						<div>
+							<form:errors path="groupSize" cssClass="error" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="description" path="description">${labelReservationDescription}</span>
+						<form:input path="description" class="form-control capitalise" placeholder="${labelReservationDescription}" aria-describedby="description" />
+						<div>
+							<form:errors path="description" cssClass="error" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					<div class="input-group input-group-100">
+						<span class="input-group-addon input-group-min-width" id="facility" path="facility">${labelReservationFacility}</span>
+						</div>
+					
+				
+				
+				
+						
+						
+						<select class="form-control" name="facility">
+							 <option value="Kies de soort kamer">Kies de soort kamer</option>
+							 <option value="De Bronzen Kamer">De Bronzen Kamer</option>
+							 <option value="De Zilveren Kamer">De Zilveren Kamer</option>
+								<option value="De Gouden Kamer">De Gouden Kamer</option>
+								<option value="De Platinum Kamer">De Platinum Kamer</option>
+								</select>
+				
+				</div>
+				<div class="panel-body input-group input-group-100">
+					
+					<span class="input-group-addon input-group-min-width" > ${labelReservationFormDecor}  </span>
+					
+						<input type="checkbox" name="decor" value="WIFI"/>WiFi  
+						<input type="checkbox" name="decor" value="DECORATION"/>Decoration   
+						<input type="checkbox" name="decor" value="BEAMER"/>Beamer  
+						<input type="checkbox" name="decor" value="MENU"/>Menu  
+					</div>
+				
+						
+						
+						
+				
+				
+		
+				
+	
+	</div>
+	</div>
+	</form:form>
 	</div>
 	
