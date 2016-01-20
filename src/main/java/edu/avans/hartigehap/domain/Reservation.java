@@ -9,13 +9,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Getter;
@@ -62,7 +60,7 @@ public class Reservation extends DomainObject {
 	private Customer customer;
 	
 	//no cascading
-    @OneToMany
+    @ManyToMany
     private Collection<Restaurant> restaurants = new ArrayList<Restaurant>();
 	
 	public void addPeriod (IPeriod Period)
@@ -87,12 +85,9 @@ public class Reservation extends DomainObject {
 	        groupSize = reservation.groupSize;
 	        description = reservation.description;
 	    }
-	public Reservation (String name, String description, int groupSize, long CUSTOMER_ID, long FACILITY_ID, long STATUS_ID){
+	public Reservation (String name, String description, int groupSize){
 		 this.name=name;
 		 this.description=description;
 		 this.groupSize=groupSize;
-		 CUSTOMER_ID = customer.getId();
-		 FACILITY_ID = facility.getId();
-		 STATUS_ID = state.getId();
 		}
 	}

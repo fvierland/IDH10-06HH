@@ -117,10 +117,10 @@ public class RestaurantPopulatorServiceImpl implements RestaurantPopulatorServic
 		this.finalStateRepository.save(new FinalState());
 		
 		// create reservations
-		reservationRepository.save(new Reservation ("Jansen", "Bruiloft",20,1,2,3));
-		reservationRepository.save(new Reservation ("Kimpton", "50 jaar",50,2,3,2));
-		reservationRepository.save(new Reservation ("Koevoets", "Examen Feest",80,1,2,3));
-		reservationRepository.save(new Reservation ("van Ierland", "Verjaardag",40,2,3,2));		
+		reservationRepository.save(new Reservation ("Jansen", "Bruiloft",20));
+		reservationRepository.save(new Reservation ("Kimpton", "50 jaar",50));
+		reservationRepository.save(new Reservation ("Koevoets", "Examen Feest",80));
+		reservationRepository.save(new Reservation ("van Ierland", "Verjaardag",40));		
     }
 
     private void createFoodCategory(String tag) {

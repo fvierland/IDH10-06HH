@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.*;

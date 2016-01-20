@@ -154,7 +154,7 @@ public class ReservationController {
                 httpServletRequest, redirectAttributes, locale);
 }
     
-
+    
     // Reservering verwijderen
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations/{id}", params = "delete", method = RequestMethod.GET)
     public String delete(@PathVariable("restaurantName") String restaurantName, @PathVariable("id") Long id) {
@@ -186,6 +186,8 @@ public class ReservationController {
             return this.listReservations(restaurantName, uiModel);
         }
     }
+    
+    
     
    private Restaurant warmupRestaurant(String restaurantName, Model uiModel) {
         Collection<Restaurant> restaurants = restaurantService.findAll();
