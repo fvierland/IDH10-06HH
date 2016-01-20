@@ -41,14 +41,13 @@ public class ReservationController {
      
  
     
-    //List reservations   - WERKT ! 
+    //List all reservations   - WERKT! 
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations", method = RequestMethod.GET)
     public String listReservations (@PathVariable("restaurantName")String restaurantName, Model uiModel) {
     	warmupRestaurant(restaurantName, uiModel);
     	
     	List<Reservation> reservations = this.reservationService.findAll();
     	   	
-
         uiModel.addAttribute("reservations", reservations);
         return "hartigehap/listreservations";
     }
@@ -64,7 +63,6 @@ public class ReservationController {
         return "hartigehap/showreservations";
     }
     
-    
     // Update reservation
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations/{id}", params = "form", method = RequestMethod.GET)
     public String updateReservationForm(@PathVariable("restaurantName") String restaurantName, @PathVariable("id") Long id,
@@ -77,7 +75,6 @@ public class ReservationController {
         return "hartigehap/editreservations";
     }
     
-       
     // Create reservation
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations", params = "form", method = RequestMethod.GET)
     public String createReservationForm(@PathVariable("restaurantName") String restaurantName, Model uiModel) {
@@ -155,7 +152,7 @@ public class ReservationController {
 }
     
     
-    // Reservering verwijderen
+    // Reservering verwijderen - WERKT!
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations/{id}", params = "delete", method = RequestMethod.GET)
     public String delete(@PathVariable("restaurantName") String restaurantName, @PathVariable("id") Long id) {
 

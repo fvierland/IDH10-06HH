@@ -40,8 +40,6 @@
 	<spring:url value="/restaurants/${restaurant.id}/reservations" var="deleteReservationUrl" />
 	<spring:url value="/restaurants/${restaurant.id}" var="showRestaurant" />
 	
-
-
 	<div class="row">
 		<h1>${labelReservationSubsystem}</h1>
 		<h2 class="restaurant muted">${labelRestaurant} <a href="${showRestaurant}">${restaurant.id}</a></h2>
