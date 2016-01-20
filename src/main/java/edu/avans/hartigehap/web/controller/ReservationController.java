@@ -51,7 +51,8 @@ public class ReservationController {
         uiModel.addAttribute("reservations", reservations);
         return "hartigehap/listreservations";
     }
-    // 	show reservation
+    
+//  show reservation
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations/{id}", method = RequestMethod.GET)
     public String showReservation(@PathVariable("restaurantName") String restaurantName, @PathVariable("id") Long id,
             Model uiModel) {
@@ -61,8 +62,8 @@ public class ReservationController {
         Reservation reservation = reservationService.findById(id);
         uiModel.addAttribute("reservation", reservation);
         return "hartigehap/showreservations";
-    }
-    
+    }        
+        
     // Update reservation
     @RequestMapping(value = "/restaurants/{restaurantName}/reservations/{id}", params = "form", method = RequestMethod.GET)
     public String updateReservationForm(@PathVariable("restaurantName") String restaurantName, @PathVariable("id") Long id,

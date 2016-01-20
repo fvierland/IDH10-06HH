@@ -27,8 +27,6 @@
 	<spring:message code="label_reservation_delete" var="labelReservationDelete" />
 	<spring:message code="date_format_pattern" var="dateFormatPattern" />
 	<spring:message code="text_there_are_no_reservations" var="textThereAreNoReservations" />
-	<spring:message code="label_reservation_form_facility" var=ReservationFormFacility />
-	<spring:message code="label_reservation_form_decorators" var=ReservationFormDecorators />
 		
 	<spring:message code="text_clear" var="textClear" />
 	<spring:message code="text_save" var="textSave" />
@@ -44,4 +42,10 @@
 	<div class="row">
 		<h1>${labelReservationSubsystem}</h1>
 		<h2 class="restaurant muted">${labelRestaurant} <a href="${showRestaurant}">${restaurant.id}</a></h2>
+	
+	<c:if test="${not empty message}">
+			<div id="message" class="alert alert-info ${message.type}">${message.message}</div>
+		</c:if>
 	</div>
+	</div>
+	
