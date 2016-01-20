@@ -137,7 +137,7 @@ public class ReservationController {
     
     
    // nieuwe reservering
-    @RequestMapping(value = "/restaurants/${restaurant.id}/newreservations", params = "form", method = RequestMethod.GET)
+    @RequestMapping(value = "/restaurants/${restaurant.id}/newreservations", params = "form", method = RequestMethod.POST)
     public String createReservation (@PathVariable("restaurantName") String restaurantName, @Valid Reservation reservation,
             BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,
             RedirectAttributes redirectAttributes, Locale locale)            {
